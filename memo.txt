@@ -1,0 +1,8 @@
+>mkdir instaclone
+>cd instaclone
+>git init
+>git remote add origin https://...
+>npm init -y
+>code .
+# gitignore extension 설치 (command palette > add gitignore> node선택)
+>touch README.MD
