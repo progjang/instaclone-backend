@@ -1,3 +1,5 @@
+#3 Backend Setup
+##3.0 Setup
 >mkdir instaclone
 >cd instaclone
 >git init
@@ -6,3 +8,31 @@
 >code .
 # gitignore extension 설치 (command palette > add gitignore> node선택)
 >touch README.MD
+
+
+##3.1 Apollo Server
+>npm i apollo-server@2.25.2 graphql
+>touch server.js
+>npm i nodemon --save-dev
++package.json
+  "scripts": {
+    "dev": "nodemon --exec node server.js"
+  },
+
+##3.2 Babel
+-babel/core 바벨
+-babel/preset-env 코드변환 필요시 업데이트
+-babel/node js파일 실행
+
+>npm install --save-dev @babel/core
+>npm install @babel/preset-env --save-dev
+>touch babel.config.json
++babel.config.json
+{
+  "presets": ["@babel/preset-env"]
+}
+>npm install --save-dev @babel/node
++package.json
+  "scripts": {
+    "dev": "nodemon --exec babel-node server"
+  },
