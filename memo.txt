@@ -58,3 +58,15 @@ postgres=# create database db_instaclone owner={name};
 ##3.5 Prisma migrate
 >schema.prisma에 생성할 모델 정의
 > npx prisma migrate dev
+
+##3.9-10 Architecture
+도메인별로 typeDefs, resolvers 만들고,
+graphql-tools 이용해서 schema 병합하기
+graphql-tools 업데이트로 아래 메서드들을 사용하려면 아래와 같이 패키지를 설치 후 사용해야 합니다.
+
+>npm i @graphql-tools/schema @graphql-tools/load-files @graphql-tools/merge
++ schema.js
+import { makeExecutableSchema } from '@graphql-tools/schema'
+import { loadFilesSync } from '@graphql-tools/load-files'
+import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge'
+
