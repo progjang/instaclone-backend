@@ -70,3 +70,8 @@ import { makeExecutableSchema } from '@graphql-tools/schema'
 import { loadFilesSync } from '@graphql-tools/load-files'
 import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge'
 
+## dotenv
+>npm i dotenv
++server.js
+require("dotenv").config() 다른 모듈 import하기 전 맨위에
+-> process.env.PORT 와 같이 .env파일 접근할 수 있게 됨
