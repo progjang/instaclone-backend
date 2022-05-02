@@ -75,3 +75,23 @@ import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge'
 +server.js
 require("dotenv").config() 다른 모듈 import하기 전 맨위에
 -> process.env.PORT 와 같이 .env파일 접근할 수 있게 됨
+
+##4.0 Create Account
++schema.prisma
+model User {
+  ...
+}
++users/users.typeDefs.js (export default gql` type User{schema.prisma와 싱크}, type Mutation{createAccount:...}`)
++users/users.resolvers.js (export default {Mutation:{createAccount:()=>{}}})
+
+>npm i bcrypt (for hashing password)
+=> const uglyPassword = await bcrypt.hash(password, 10);
+
+##~4.5 login part
+>npm i jsonwebtoken
++users.mutations.js
+(1) username 으로 해당 user를 찾는다. => client.user.findFirst
+(2) check password =>bcrypt.compare(password, user.password)
+(3) issue a token and send it to the user 
+=> const token = await jwt.sign({id: user.id}, process.env.SECRET_KEY)
+return { ok: true, token}
